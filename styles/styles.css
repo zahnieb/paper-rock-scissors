@@ -1,0 +1,81 @@
+html {
+    background-color: rgb(245, 245, 245);
+    font-family: sans-serif;
+    height: 100%;
+}
+
+header {
+    line-height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    text-align: center;
+    font-size: xx-large;
+    background-color: rgba(56, 86, 184, 0.281);
+    border-color: tomato;
+}
+
+body {
+    margin: 10px;
+    height: 100%;
+    border-left: 10px solid rgba(12, 1, 1, 0.411);
+    border-right: 10px solid rgba(12, 1, 1, 0.411);
+    text-align: center;
+    background-color: rgba(211, 224, 230, 0.836);
+}
+
+button {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    margin: 0;   
+}
+
+#paper-btn {
+    background-image: url(/images/paper.png);
+    background-size: 100%;
+    position: absolute;
+    margin-right: auto;
+    margin-left: auto;
+    top: 40%;
+    left: 48%;
+}
+
+#rock-btn{
+    background-image: url(/images/rock.png);
+    background-size: 100%;
+    display: inline-block;
+    position: absolute;
+    top: 40%;
+    left: 35%;
+}
+
+#scissors-btn {
+    background-image: url(/images/scissors.png);
+    background-size: 100%;
+    display: inline-block;
+    position: absolute;
+    top: 40%;
+    left: 61%;
+}
+
+#computerScore{
+    position: absolute;
+    margin: 0;
+    top: 60%;
+    left: 61%;
+}
+
+#playerScore{
+    position: absolute;
+    text-align: center;
+    margin: 0;
+    top: 60%;
+    left: 35%;
+}
+
+#singleResult{
+    position: absolute;
+    left: 45%;
+    top: 55%;
+}

@@ -1,52 +1,69 @@
+let computerCount = 0;
+let playerCount = 0;
+let playerSelection;
+
+
 // computer move
 function computerPlay(){
     let moves = ["rock" , "paper" , "scissors"];
-    return computerSelection = moves[Math.floor(Math.random() * moves.length)];
+    return moves[Math.floor(Math.random() * moves.length)];
 }
+
+// buttons for player move
+let paperButton = document.getElementById("paper-btn");
+paperButton.addEventListener('click', () => {
+    singleResult.innerHTML = playRound("paper");
+})
+
+let rockButton = document.getElementById("rock-btn");
+rockButton.addEventListener('click', () => {
+    singleResult.innerHTML = playRound("rock");
+})
+
+let scissorsButton = document.getElementById('scissors-btn');
+scissorsButton.addEventListener('click', () =>{
+    singleResult.innerHTML = playRound("scissors");
+})
 
 // plays one round of paper, rock, scissors
-function playRound(){
-    computerPlay();
-    console.log(computerPlay());
-    var playerSelection = prompt("Please select rock, paper or scissors").toLocaleLowerCase();
-
+function playRound(playerSelection){
+    const computerSelection = computerPlay();
+    let result;
     if (playerSelection == "rock" && computerSelection == "scissors"){
-        return outcome = "You Win!";
+        playerCount++;
+        result = "You Win! " + playerSelection + " beats " + computerSelection + "!";
+        playerScore.innerHTML = "Your Score = " + playerCount;
+        document.body.appendChild(playerScore);
     } else if (playerSelection == "paper" && computerSelection == "rock") {
-        return outcome = "You Win!";
+        playerCount++;
+        result = "You Win! " + playerSelection + " beats " + computerSelection + "!";
+        playerScore.innerHTML = "Your Score = " + playerCount;
+        document.body.appendChild(playerScore);
     } else if (playerSelection == "scissors" && computerSelection == "paper"){
-        return outcome = "You Win!";
+        playerCount++;
+        result = "You Win! " + playerSelection + " beats " + computerSelection + "!";
+        playerScore.innerHTML = "Your Score = " + playerCount;
+        document.body.appendChild(playerScore);
     } else if (playerSelection === computerSelection){
-        return outcome = "Draw! Try again!";
+        result = "Draw! Try again!";
     } else {
-        return outcome = "You lose!"
+        computerCount++;
+        result = "You Lose! " + computerSelection + " beats " + playerSelection + "!";
+        computerScore.innerHTML = "Computer Score = " + computerCount;
+        document.body.appendChild(computerScore);
     }
+    if (computerCount === 5) alert("Computer Wins!");
+    if (playerCount === 5) alert("You Win!");
+    return result;
+    
 }
 
+let computerScore = document.createElement('div');
+computerScore.id = "computerScore";
 
+let playerScore = document.createElement('div');
+playerScore.id = "playerScore";
 
-//fucntion for 5 game set
-function game(){
-    let computerCount = 0;
-    let playerCount = 0;
-
-    for (let i = 1; i <= 5; i++){
-        playRound();
-        if (outcome === "You Win!"){
-            playerCount++;
-        } else if (outcome === "You lose!"){
-            computerCount++;
-        }
-        if (playerCount == 3 || computerCount == 3) {
-            break;
-        }
-    }
-
-    if (playerCount > computerCount){
-        return alert("You Win the series!");
-    } else if (computerCount > playerCount) {
-        return alert("You lose the series!");
-    }
-}
-
-console.log(game());
+let singleResult = document.createElement('div');
+singleResult.id = "singleResult";
+document.body.appendChild(singleResult); // shows single round result
